@@ -1,0 +1,27 @@
+CREATE TABLE categories (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name TEXT NOT NULL,
+    parent_id BIGINT REFERENCES categories(id)
+);
+
+CREATE TABLE employees (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name TEXT NOT NULL,
+    position TEXT NOT NULL,
+    manager_id BIGINT REFERENCES employees(id)
+);
+
+CREATE TABLE comments (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    post_id BIGINT NOT NULL,
+    parent_id BIGINT REFERENCES comments(id),
+    author TEXT NOT NULL,
+    text TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL
+);
+
+CREATE TABLE folders (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name TEXT NOT NULL,
+    parent_id BIGINT REFERENCES folders(id)
+);
