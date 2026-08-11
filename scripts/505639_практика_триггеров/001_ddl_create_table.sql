@@ -1,0 +1,7 @@
+CREATE TABLE movie_price_history (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    movie_id BIGINT NOT NULL,
+    old_price NUMERIC,
+    new_price NUMERIC,
+    changed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
